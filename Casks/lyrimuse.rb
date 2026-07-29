@@ -12,7 +12,7 @@ cask "lyrimuse" do
     strategy :github_latest
   end
 
-  depends_on macos: ">= :sonoma"
+  depends_on macos: :sonoma
 
   app "Lyrimuse.app"
 
@@ -30,14 +30,14 @@ cask "lyrimuse" do
   # either way.
   postflight do
     system_command "/usr/bin/xattr",
-                    args: ["-dr", "com.apple.quarantine", "#{appdir}/Lyrimuse.app"],
-                    sudo: false
+                   args: ["-dr", "com.apple.quarantine", "#{appdir}/Lyrimuse.app"],
+                   sudo: false
   end
 
   zap trash: [
     "~/.config/lyrimuse",
-    "~/Library/LaunchAgents/me.yudaotor.lyrimuse.plist",
     "~/Library/LaunchAgents/com.lyrimuse.collector.plist",
+    "~/Library/LaunchAgents/me.yudaotor.lyrimuse.plist",
     "~/Library/Logs/lyrimuse.log",
     "~/Library/Preferences/me.yudaotor.lyrimuse.plist",
   ]

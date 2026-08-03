@@ -1,10 +1,10 @@
 cask "lyrimuse" do
-  version "1.1.0"
-  sha256 "0723b7ed40ed4ea684ee3547c4542d66010849fa5d36cbb71ce314b7f25271b6"
+  version "1.2.0"
+  sha256 "8e70b37c2e0a50341865bf2f3630195cfb8261b24137645370cf22d30ad244ca"
 
   url "https://github.com/Yudaotor/lyrimuse/releases/download/v#{version}/Lyrimuse-v#{version}-macos.zip"
   name "Lyrimuse"
-  desc "Real-time, word-synced desktop lyrics for Apple Music and QQ Music"
+  desc "Real-time, word-synced desktop lyrics for Apple Music and others"
   homepage "https://github.com/Yudaotor/lyrimuse"
 
   livecheck do

@@ -1,6 +1,6 @@
 cask "lyrimuse" do
-  version "1.2.0"
-  sha256 "8e70b37c2e0a50341865bf2f3630195cfb8261b24137645370cf22d30ad244ca"
+  version "1.3.0"
+  sha256 "96b5a5d86bbeb17d1151cbc2cace5f6aae59c1a6461cdbfe186de89d5695b0a9"
 
   url "https://github.com/Yudaotor/lyrimuse/releases/download/v#{version}/Lyrimuse-v#{version}-macos.zip"
   name "Lyrimuse"
@@ -13,6 +13,12 @@ cask "lyrimuse" do
   end
 
   depends_on macos: :sonoma
+  # The zip this cask installs is the arm64-only primary asset -- Intel Macs need the
+  # separate -intel universal build from the Releases page, which Homebrew has no way to
+  # pick automatically here. Without this an Intel install "succeeds" and then the app
+  # simply refuses to launch. Every release up to v1.2.0 was arm64-only too, and this
+  # cask claimed nothing about architecture the whole time.
+  depends_on arch: :arm64
 
   app "Lyrimuse.app"
 

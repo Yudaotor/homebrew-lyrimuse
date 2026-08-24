@@ -1,6 +1,6 @@
 cask "lyrimuse" do
-  version "1.3.0"
-  sha256 "96b5a5d86bbeb17d1151cbc2cace5f6aae59c1a6461cdbfe186de89d5695b0a9"
+  version "1.4.0"
+  sha256 "0e7bf453f66e310a71d73dfec9338193b282fc8e1610a728f558db1df42dff2e"
 
   url "https://github.com/Yudaotor/lyrimuse/releases/download/v#{version}/Lyrimuse-v#{version}-macos.zip"
   name "Lyrimuse"

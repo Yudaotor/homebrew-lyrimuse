@@ -1,10 +1,16 @@
 cask "lyrimuse" do
-  version "1.5.0"
-  sha256 "7c6196f3c77d11fbe23cebefce80e386b8d134eb4cd864ad498042b3a0d384e2"
+  # The primary "-macos" asset is arm64-only; Intel Macs get the separate "-intel"
+  # universal build. Without this split an Intel install used to "succeed" and then
+  # the app simply refused to launch (this cask was arm64-only until v1.5.0).
+  arch intel: "-intel"
 
-  url "https://github.com/Yudaotor/lyrimuse/releases/download/v#{version}/Lyrimuse-v#{version}-macos.zip"
+  version "1.5.0"
+  sha256 arm:   "7c6196f3c77d11fbe23cebefce80e386b8d134eb4cd864ad498042b3a0d384e2",
+         intel: "50c55fa3803710582ac1bb14078150b43f14b93fcc55c9f1bacd1e909577e0da"
+
+  url "https://github.com/Yudaotor/lyrimuse/releases/download/v#{version}/Lyrimuse-v#{version}-macos#{arch}.zip"
   name "Lyrimuse"
-  desc "Real-time, word-synced desktop lyrics for Apple Music and others"
+  desc "Word-synced desktop lyrics for Apple Music, Spotify, QQ Music and NetEase"
   homepage "https://github.com/Yudaotor/lyrimuse"
 
   livecheck do
@@ -12,13 +18,10 @@ cask "lyrimuse" do
     strategy :github_latest
   end
 
+  # The app updates itself via Sparkle (appcast on GitHub Releases), so a brew
+  # upgrade isn't the only way users stay current.
+  auto_updates true
   depends_on macos: :sonoma
-  # The zip this cask installs is the arm64-only primary asset -- Intel Macs need the
-  # separate -intel universal build from the Releases page, which Homebrew has no way to
-  # pick automatically here. Without this an Intel install "succeeds" and then the app
-  # simply refuses to launch. Every release up to v1.2.0 was arm64-only too, and this
-  # cask claimed nothing about architecture the whole time.
-  depends_on arch: :arm64
 
   app "Lyrimuse.app"
 

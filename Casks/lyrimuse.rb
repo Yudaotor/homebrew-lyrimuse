@@ -4,9 +4,9 @@ cask "lyrimuse" do
   # the app simply refused to launch (this cask was arm64-only until v1.5.0).
   arch intel: "-intel"
 
-  version "1.7.0"
-  sha256 arm:   "d968f89186e020efe330cd39de8fbfcbbc8a19a151fe50544edf83349052f5cf",
-         intel: "667b8b566564ecf4e32e01ad9696b8b6f90ac95418c685fb25557e193b47963a"
+  version "1.8.0"
+  sha256 arm:   "695696ba507730d183d63a7a7f86a56ff456b3afab77c9c91bc7d9825cede2dd",
+         intel: "276b6c683a7b0656b2ce3934775212ef103c1fc2748c32bfa5dbc13304624bca"
 
   url "https://github.com/Yudaotor/lyrimuse/releases/download/v#{version}/Lyrimuse-v#{version}-macos#{arch}.zip"
   name "Lyrimuse"

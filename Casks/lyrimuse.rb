@@ -37,10 +37,8 @@ cask "lyrimuse" do
   # Option A tells users to run themselves -- just automatically, since this
   # is the maintainer's own personal tap and the trust decision is identical
   # either way.
-  postflight do
-    system_command "/usr/bin/xattr",
-                   args: ["-dr", "com.apple.quarantine", "#{appdir}/Lyrimuse.app"],
-                   sudo: false
+  postflight_steps do
+    run "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "{{appdir}}/Lyrimuse.app"]
   end
 
   zap trash: [

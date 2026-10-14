@@ -48,8 +48,10 @@ cask "lyrimuse" do
     "~/Library/HTTPStorages/me.yudaotor.lyrimuse.binarycookies",
     "~/Library/LaunchAgents/com.lyrimuse.collector.plist",
     "~/Library/LaunchAgents/me.yudaotor.lyrimuse.plist",
-    "~/Library/Logs/lyrimuse.log",
     "~/Library/Logs/lyrimuse-app.log",
+    "~/Library/Logs/lyrimuse-main-thread-stall.txt",
+    "~/Library/Logs/lyrimuse.log*",
     "~/Library/Preferences/me.yudaotor.lyrimuse.plist",
+    "~/Library/WebKit/me.yudaotor.lyrimuse",
   ]
 end

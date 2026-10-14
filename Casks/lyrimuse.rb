@@ -43,9 +43,13 @@ cask "lyrimuse" do
 
   zap trash: [
     "~/.config/lyrimuse",
+    "~/Library/Caches/me.yudaotor.lyrimuse",
+    "~/Library/HTTPStorages/me.yudaotor.lyrimuse",
+    "~/Library/HTTPStorages/me.yudaotor.lyrimuse.binarycookies",
     "~/Library/LaunchAgents/com.lyrimuse.collector.plist",
     "~/Library/LaunchAgents/me.yudaotor.lyrimuse.plist",
     "~/Library/Logs/lyrimuse.log",
+    "~/Library/Logs/lyrimuse-app.log",
     "~/Library/Preferences/me.yudaotor.lyrimuse.plist",
   ]
 end

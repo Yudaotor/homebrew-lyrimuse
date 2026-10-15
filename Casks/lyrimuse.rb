@@ -41,6 +41,8 @@ cask "lyrimuse" do
     run "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "{{appdir}}/Lyrimuse.app"]
   end
 
+  uninstall quit: "me.yudaotor.lyrimuse"
+
   zap trash: [
     "~/.config/lyrimuse",
     "~/Library/Caches/me.yudaotor.lyrimuse",

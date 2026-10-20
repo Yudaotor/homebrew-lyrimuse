@@ -41,19 +41,31 @@ cask "lyrimuse" do
     run "/usr/bin/xattr", args: ["-dr", "com.apple.quarantine", "{{appdir}}/Lyrimuse.app"]
   end
 
-  uninstall quit: "me.yudaotor.lyrimuse"
+  # The background engine is a KeepAlive launch agent: left loaded, launchd keeps
+  # relaunching a binary that's no longer there. The app only reinstalls the job
+  # when it launches, so unloading it before quitting the app is safe.
+  uninstall launchctl: "com.lyrimuse.collector",
+            quit:      "me.yudaotor.lyrimuse"
 
-  zap trash: [
-    "~/.config/lyrimuse",
-    "~/Library/Caches/me.yudaotor.lyrimuse",
-    "~/Library/HTTPStorages/me.yudaotor.lyrimuse",
-    "~/Library/HTTPStorages/me.yudaotor.lyrimuse.binarycookies",
-    "~/Library/LaunchAgents/com.lyrimuse.collector.plist",
-    "~/Library/LaunchAgents/me.yudaotor.lyrimuse.plist",
-    "~/Library/Logs/lyrimuse-app.log",
-    "~/Library/Logs/lyrimuse-main-thread-stall.txt",
-    "~/Library/Logs/lyrimuse.log*",
-    "~/Library/Preferences/me.yudaotor.lyrimuse.plist",
-    "~/Library/WebKit/me.yudaotor.lyrimuse",
-  ]
+  # Account credentials live in one login-keychain item, keyed by the config
+  # folder. `security` exits 44 when there is none, which isn't a failure here.
+  zap script: {
+        executable:   "/usr/bin/security",
+        args:         ["delete-generic-password", "-s", "me.yudaotor.lyrimuse.credentials",
+                       "-a", "#{Dir.home}/.config/lyrimuse"],
+        must_succeed: false,
+      },
+      trash:  [
+        "~/.config/lyrimuse",
+        "~/Library/Caches/me.yudaotor.lyrimuse",
+        "~/Library/HTTPStorages/me.yudaotor.lyrimuse",
+        "~/Library/HTTPStorages/me.yudaotor.lyrimuse.binarycookies",
+        "~/Library/LaunchAgents/com.lyrimuse.collector.plist",
+        "~/Library/LaunchAgents/me.yudaotor.lyrimuse.plist",
+        "~/Library/Logs/lyrimuse-app.log",
+        "~/Library/Logs/lyrimuse-main-thread-stall.txt",
+        "~/Library/Logs/lyrimuse.log*",
+        "~/Library/Preferences/me.yudaotor.lyrimuse.plist",
+        "~/Library/WebKit/me.yudaotor.lyrimuse",
+      ]
 end

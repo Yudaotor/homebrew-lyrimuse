@@ -57,6 +57,8 @@ cask "lyrimuse" do
       },
       trash:  [
         "~/.config/lyrimuse",
+        "~/.config/lyrimuse-backups/*-song-entity",
+        "~/.config/lyrimuse-backups/*-song-entity-manual",
         "~/.config/lyrimuse.leftover-*",
         "~/.config/lyrimuse.migrated",
         "~/Library/Application Support/me.yudaotor.lyrimuse",
@@ -70,5 +72,6 @@ cask "lyrimuse" do
         "~/Library/Logs/lyrimuse.log*",
         "~/Library/Preferences/me.yudaotor.lyrimuse.plist",
         "~/Library/WebKit/me.yudaotor.lyrimuse",
-      ]
+      ],
+      rmdir:  "~/.config/lyrimuse-backups"
 end

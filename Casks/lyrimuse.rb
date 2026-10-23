@@ -57,6 +57,9 @@ cask "lyrimuse" do
       },
       trash:  [
         "~/.config/lyrimuse",
+        "~/.config/lyrimuse.leftover-*",
+        "~/.config/lyrimuse.migrated",
+        "~/Library/Application Support/me.yudaotor.lyrimuse",
         "~/Library/Caches/me.yudaotor.lyrimuse",
         "~/Library/HTTPStorages/me.yudaotor.lyrimuse",
         "~/Library/HTTPStorages/me.yudaotor.lyrimuse.binarycookies",

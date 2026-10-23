@@ -47,12 +47,12 @@ cask "lyrimuse" do
   uninstall launchctl: "com.lyrimuse.collector",
             quit:      "me.yudaotor.lyrimuse"
 
-  # Account credentials live in one login-keychain item, keyed by the config
+  # Account credentials live in one login-keychain item, keyed by the data
   # folder. `security` exits 44 when there is none, which isn't a failure here.
   zap script: {
         executable:   "/usr/bin/security",
         args:         ["delete-generic-password", "-s", "me.yudaotor.lyrimuse.credentials",
-                       "-a", "#{Dir.home}/.config/lyrimuse"],
+                       "-a", "#{Dir.home}/Library/Application Support/me.yudaotor.lyrimuse"],
         must_succeed: false,
       },
       trash:  [
